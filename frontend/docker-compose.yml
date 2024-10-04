@@ -4,12 +4,3 @@ services:
     command: 'find /app/src -type f'
     volumes:
       - "${DOCKER_VOLUME_BUG_FRONTEND_PATH:-./src}:/app/src"
-    networks:
-      - "${DOCKER_VOLUME_BUG_FRONTEND_NETWORK:-docker-volume-bug}"
-
-networks:
-  docker-volume-bug-frontend:
-    driver: bridge
-  docker-volume-bug:
-    name: docker-volume-bug
-    driver: bridge
