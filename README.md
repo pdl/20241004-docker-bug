@@ -50,4 +50,16 @@ backend-1   | /app/src/backend.txt
 frontend-1  | /app/src/backend.txt
 ```
 
-If we
+There is a workaround:
+
+```bash
+env DOCKER_VOLUME_BUG_FRONTEND_PATH=../frontend/src \
+  docker compose \
+  -p docker-volume-bug \
+  -f backend/docker-compose.yml \
+  -f frontend/docker-compose.yml \
+  up;
+docker compose -p docker-volume-bug down;
+```
+
+Weirdly, however, it doesn't work when `DOCKER_VOLUME_BUG_BACKEND_PATH` is set.
