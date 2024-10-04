@@ -1,0 +1,15 @@
+services:
+  backend:
+    image: debian:12-slim
+    command: 'find /app/src -type f'
+    volumes:
+      - "${DOCKER_VOLUME_BUG_BACKEND_PATH:-./src}:/app/src"
+    networks:
+      - "${DOCKER_VOLUME_BUG_BACKEND_NETWORK:-docker-volume-bug}"
+
+networks:
+  docker-volume-bug-backend:
+    driver: bridge
+  docker-volume-bug:
+    name: docker-volume-bug
+    driver: bridge
